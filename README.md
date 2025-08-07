@@ -1,5 +1,6 @@
 # Food Sharing App — Client Side
 
+## Overview
 This is the frontend of the Food Sharing platform built using React and Vite. It allows users to donate food, browse available items, and request food securely.
 
 ---
@@ -41,6 +42,11 @@ To reduce food waste and connect donors with individuals in need by enabling use
 - motion/react
 
 ---
+
+## Screenshots
+> Place your screenshots in `public/screenshots/` and reference them here.
+![Home](public/screenshots/home.png)
+![Food Details](public/screenshots/food-details.png)
 
 ## Environment Variables
 

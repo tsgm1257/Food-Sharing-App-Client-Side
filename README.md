@@ -44,7 +44,6 @@ To reduce food waste and connect donors with individuals in need by enabling use
 ---
 
 ## Screenshots
-> Place your screenshots in `public/screenshots/` and reference them here.
 ![Home](public/screenshots/home.png)
 ![Food Details](public/screenshots/food-details.png)
 

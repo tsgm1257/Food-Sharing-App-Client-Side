@@ -3,10 +3,10 @@
 
 @layer utilities {
   .container-app {
-    @apply max-w-7xl mx-auto px-4;
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
   .section-y {
-    @apply py-16;
+    @apply py-12 sm:py-16;
   }
   .card-uniform {
     @apply rounded-xl shadow border border-base-200 bg-base-100;

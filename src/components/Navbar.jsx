@@ -49,16 +49,20 @@ const Navbar = () => {
   return (
     <div className="fixed top-0 left-0 right-0 z-50 bg-base-100 text-base-content border-b">
       <div className="container-app">
-        <div className="navbar px-0">
+        <div
+          className="flex h-16 items-center justify-between"
+          role="navigation"
+          aria-label="Main"
+        >
           {/* Left: Brand */}
-          <div className="navbar-start">
+          <div className="flex items-center">
             <Link to="/" className="text-lg font-bold tracking-wide">
               FoodShare
             </Link>
           </div>
 
           {/* Center: desktop nav */}
-          <div className="navbar-center hidden lg:flex">
+          <div className="hidden lg:flex flex-1 justify-center">
             <nav className="flex items-center gap-1">
               {publicLinks.map((item) => (
                 <NavItem key={item.to} to={item.to}>
@@ -75,7 +79,7 @@ const Navbar = () => {
           </div>
 
           {/* Right: desktop auth + hamburger */}
-          <div className="navbar-end gap-2">
+          <div className="flex items-center gap-2">
             {/* Desktop auth */}
             <div className="hidden lg:flex items-center gap-2">
               {!user ? (
@@ -89,6 +93,7 @@ const Navbar = () => {
                 </>
               ) : (
                 <>
+                  {/* Avatar with tooltip */}
                   <div
                     className="tooltip tooltip-bottom"
                     data-tip={displayName}
@@ -135,6 +140,7 @@ const Navbar = () => {
                   <>
                     <li className="menu-title mt-1">Dashboard</li>
 
+                    {/* Profile pic inside Dashboard (tooltip shows name) */}
                     <li className="py-2">
                       <div
                         className="tooltip tooltip-bottom mx-auto"

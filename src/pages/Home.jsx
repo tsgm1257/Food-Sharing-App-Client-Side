@@ -1,9 +1,9 @@
 import Hero from "./home/Hero";
 import FeaturedFoods from "./home/FeaturedFoods";
 import HowItWorks from "./home/HowItWorks";
+import SafetyTips from "./home/SafetyTips";
 import Highlights from "./home/Highlights";
 import Reviews from "./home/Reviews";
-// import Newsletter from "./home/Newsletter";
 
 const Home = () => {
   return (
@@ -11,9 +11,9 @@ const Home = () => {
       <Hero />
       <FeaturedFoods />
       <HowItWorks />
+      <SafetyTips />
       <Highlights />
       <Reviews />
-      {/* <Newsletter /> */}
     </>
   );
 };

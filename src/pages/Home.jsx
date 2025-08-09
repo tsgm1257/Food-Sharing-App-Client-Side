@@ -2,7 +2,7 @@ import Hero from "./home/Hero";
 import FeaturedFoods from "./home/FeaturedFoods";
 import HowItWorks from "./home/HowItWorks";
 import Highlights from "./home/Highlights";
-// import Reviews from "./home/Reviews";
+import Reviews from "./home/Reviews";
 // import Newsletter from "./home/Newsletter";
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
       <FeaturedFoods />
       <HowItWorks />
       <Highlights />
-      {/* <Reviews /> */}
+      <Reviews />
       {/* <Newsletter /> */}
     </>
   );

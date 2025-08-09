@@ -1,5 +1,5 @@
 import Hero from "./home/Hero";
-// import FeaturedFoods from "./home/FeaturedFoods";
+import FeaturedFoods from "./home/FeaturedFoods";
 // import RecentFoods from "./home/RecentFoods";
 // import HowItWorks from "./home/HowItWorks";
 // import Highlights from "./home/Highlights";
@@ -10,12 +10,12 @@ const Home = () => {
   return (
     <>
       <Hero />
-      {/* <FeaturedFoods />
-      <RecentFoods />
-      <HowItWorks />
-      <Highlights />
-      <Reviews />
-      <Newsletter /> */}
+      <FeaturedFoods />
+      {/* <RecentFoods /> */}
+      {/* <HowItWorks /> */}
+      {/* <Highlights /> */}
+      {/* <Reviews /> */}
+      {/* <Newsletter /> */}
     </>
   );
 };

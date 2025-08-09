@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,6 +8,20 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <script>
+      (function () {
+        const mq = window.matchMedia("(prefers-color-scheme: dark)");
+        const apply = (isDark) => {
+          document.documentElement.setAttribute(
+            "data-theme",
+            isDark ? "dark" : "emerald"
+          );
+        };
+        apply(mq.matches);
+        mq.addEventListener("change", (e) => apply(e.matches));
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

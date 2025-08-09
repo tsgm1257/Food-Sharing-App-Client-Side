@@ -1,2 +1,27 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+@layer utilities {
+  .container-app {
+    @apply max-w-7xl mx-auto px-4;
+  }
+  .section-y {
+    @apply py-16;
+  }
+  .card-uniform {
+    @apply rounded-xl shadow border border-base-200 bg-base-100;
+  }
+  .btn-filled {
+    @apply btn btn-primary;
+  }
+  .btn-outline-uni {
+    @apply btn btn-outline border-primary text-primary;
+  }
+}
+
+@layer base {
+  :root {
+    --rounded-box: 0.75rem;
+    --rounded-btn: 0.75rem;
+  }
+}

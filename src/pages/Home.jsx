@@ -1,7 +1,6 @@
 import Hero from "./home/Hero";
 import FeaturedFoods from "./home/FeaturedFoods";
-// import RecentFoods from "./home/RecentFoods";
-// import HowItWorks from "./home/HowItWorks";
+import HowItWorks from "./home/HowItWorks";
 // import Highlights from "./home/Highlights";
 // import Reviews from "./home/Reviews";
 // import Newsletter from "./home/Newsletter";
@@ -11,8 +10,7 @@ const Home = () => {
     <>
       <Hero />
       <FeaturedFoods />
-      {/* <RecentFoods /> */}
-      {/* <HowItWorks /> */}
+      <HowItWorks />
       {/* <Highlights /> */}
       {/* <Reviews /> */}
       {/* <Newsletter /> */}

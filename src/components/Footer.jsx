@@ -1,51 +1,91 @@
-import { FaFacebook } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaGithub } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-base-200 text-base-content py-10 px-6">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-y-8 gap-x-10">
-        {/* Column 1 */}
-        <div className="flex flex-col">
-          <h3 className="footer-title">FoodShare</h3>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Privacy Policy</a>
-          <a className="link link-hover">Terms & Conditions</a>
+    <footer className="bg-base-100 text-base-content border-t">
+      <div className="container-app py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Logo & About */}
+        <div>
+          <h2 className="text-lg font-bold">FoodShare</h2>
+          <p className="text-sm mt-3 leading-relaxed">
+            Connecting communities to reduce food waste and share blessings.
+            Every meal counts — join us in making a difference.
+          </p>
         </div>
 
-        {/* Column 2 */}
-        <div className="flex flex-col">
-          <h3 className="footer-title">Support</h3>
-          <a className="link link-hover">Help Center</a>
-          <a className="link link-hover">FAQs</a>
-          <a className="link link-hover">Report a Problem</a>
+        {/* Quick Links */}
+        <div>
+          <h3 className="font-semibold mb-3">Quick Links</h3>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <a href="/" className="hover:underline">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="/available-foods" className="hover:underline">
+                Available Foods
+              </a>
+            </li>
+            <li>
+              <a href="/dashboard" className="hover:underline">
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a href="/contact" className="hover:underline">
+                Contact
+              </a>
+            </li>
+          </ul>
         </div>
 
-        {/* Column 3 */}
-        <div className="flex flex-col">
-          <h3 className="footer-title">Follow Us</h3>
-          <div className="grid grid-flow-col gap-4 mt-2">
+        {/* Contact & Social */}
+        <div>
+          <h3 className="font-semibold mb-3">Contact Us</h3>
+          <p className="text-sm">Email: support@foodshare.com</p>
+          <p className="text-sm">Phone: +1 (555) 123-4567</p>
+          <p className="text-sm">Address: 123 Main St, Irving, TX</p>
+
+          <div className="flex gap-4 mt-4 text-lg">
             <a
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Facebook"
             >
-              <FaFacebook />
-            </a>
-            <a href="https://x.com" target="_blank" rel="noopener noreferrer">
-              <FaXTwitter />
+              <FaFacebookF className="hover:text-primary transition-colors" />
             </a>
             <a
-              href="https://github.com"
+              href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Twitter"
             >
-              <FaGithub />
+              <FaTwitter className="hover:text-primary transition-colors" />
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <FaInstagram className="hover:text-primary transition-colors" />
+            </a>
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+            >
+              <FaYoutube className="hover:text-primary transition-colors" />
             </a>
           </div>
         </div>
+      </div>
+
+      <div className="bg-base-200 py-4 text-center text-sm">
+        © {new Date().getFullYear()} FoodShare. All rights reserved.
       </div>
     </footer>
   );

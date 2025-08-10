@@ -1,8 +1,10 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext/AuthProvider";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
+
+const REGISTER_IMG = "https://i.ibb.co/GfG72z3z/register-illustration.png";
 
 const Register = () => {
   const { register } = useContext(AuthContext);
@@ -17,29 +19,28 @@ const Register = () => {
     const password = e.target.password.value;
 
     const isValid = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password);
-
     if (!isValid) {
-      return Swal.fire(
+      Swal.fire(
         "Invalid Password",
         "Password must have at least one uppercase, one lowercase and be 6+ characters.",
         "error"
       );
+      return;
     }
 
     register(email, password)
       .then((result) => {
         const user = result.user;
-
         return updateProfile(user, {
           displayName: name,
-          photoURL: photoURL || "https://i.ibb.co/YpF2YtJ/avatar.png", // fallback
-        }).then(() => {
-          return fetch(`${import.meta.env.VITE_API_BASE_URL}/jwt`, {
+          photoURL: photoURL || "https://i.ibb.co/YpF2YtJ/avatar.png",
+        }).then(() =>
+          fetch(`${import.meta.env.VITE_API_BASE_URL}/jwt`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email: user.email }),
-          });
-        });
+          })
+        );
       })
       .then((res) => res.json())
       .then((data) => {
@@ -54,45 +55,69 @@ const Register = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto my-10 p-6 bg-base-100 shadow rounded">
-      <h2 className="text-2xl font-bold mb-4">Register</h2>
-      <form onSubmit={handleRegister}>
-        <input
-          name="name"
-          type="text"
-          placeholder="Name"
-          className="input input-bordered w-full mb-3"
-          required
-        />
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          className="input input-bordered w-full mb-3"
-          required
-        />
-        <input
-          name="photoURL"
-          type="text"
-          placeholder="Photo URL (optional)"
-          className="input input-bordered w-full mb-3"
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          className="input input-bordered w-full mb-3"
-          required
-        />
-        <button className="btn btn-primary w-full">Register</button>
-      </form>
-      <p className="text-sm mt-4">
-        Already have an account?{" "}
-        <a href="/login" className="text-blue-600">
-          Login
-        </a>
-      </p>
-    </div>
+    <section className="section-y">
+      <div className="container-app">
+        <div className="grid md:grid-cols-12 items-start gap-6 md:gap-8">
+          {/* LEFT: illustration — flush with container left */}
+          <div className="hidden md:flex md:col-span-7 justify-start self-start">
+            <figure className="rounded-2xl overflow-hidden border border-base-200 bg-base-100 w-full max-w-xl">
+              <img
+                src={REGISTER_IMG}
+                alt="Register illustration"
+                className="w-full h-full object-cover aspect-[5/4] md:aspect-[16/10]"
+                loading="lazy"
+              />
+            </figure>
+          </div>
+
+          {/* RIGHT: form — snap card to container right */}
+          <div className="md:col-span-5 w-full md:justify-self-end">
+            <div className="bg-base-100 shadow rounded p-6 w-full max-w-md">
+              <h2 className="text-2xl font-bold mb-4">Register</h2>
+              {error && <p className="text-error text-sm mb-3">{error}</p>}
+
+              <form onSubmit={handleRegister} className="space-y-3">
+                <input
+                  name="name"
+                  type="text"
+                  placeholder="Name"
+                  className="input input-bordered w-full"
+                  required
+                />
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  className="input input-bordered w-full"
+                  required
+                />
+                <input
+                  name="photoURL"
+                  type="text"
+                  placeholder="Photo URL (optional)"
+                  className="input input-bordered w-full"
+                />
+                <input
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  className="input input-bordered w-full"
+                  required
+                />
+                <button className="btn btn-primary w-full">Register</button>
+              </form>
+
+              <p className="text-sm mt-4">
+                Already have an account?{" "}
+                <Link to="/login" className="link link-primary">
+                  Login
+                </Link>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

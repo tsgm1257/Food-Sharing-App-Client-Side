@@ -48,7 +48,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="order-last lg:order-none">
+          <div className="order-first lg:order-none">
             <div className="rounded-2xl overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092"

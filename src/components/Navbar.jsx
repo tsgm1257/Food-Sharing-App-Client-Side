@@ -144,7 +144,7 @@ const Navbar = () => {
                   <>
                     <li className="menu-title mt-1">Dashboard</li>
 
-                    {/* Profile pic inside Dashboard (tooltip shows name) */}
+                    {/* Profile pic inside Dashboard */}
                     <li className="py-2">
                       <div
                         className="tooltip tooltip-bottom mx-auto"

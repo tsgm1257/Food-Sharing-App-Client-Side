@@ -60,7 +60,6 @@ const Login = () => {
     <section className="section-y">
       <div className="container-app">
         <div className="grid md:grid-cols-12 items-start gap-6 md:gap-8">
-          {/* LEFT: form — flush with container left */}
           <div className="md:col-span-5 w-full">
             <div className="bg-base-100 shadow rounded p-6 w-full max-w-md">
               <h2 className="text-2xl font-bold mb-4">Login</h2>
@@ -100,7 +99,6 @@ const Login = () => {
             </div>
           </div>
 
-          {/* RIGHT: illustration — aligned to container right */}
           <div className="hidden md:flex md:col-span-7 justify-end self-start">
             <figure className="rounded-2xl overflow-hidden border border-base-200 bg-base-100 w-full max-w-xl">
               <img

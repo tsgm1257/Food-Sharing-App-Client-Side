@@ -1,13 +1,15 @@
 # Food Sharing App — Client Side
 
 ## Overview
+
 This is the frontend of the Food Sharing platform built using React and Vite. It allows users to donate food, browse available items, and request food securely.
 
 ---
 
 ## Live Site
 
-[https://merry-queijadas-9a4f99.netlify.app](https://merry-queijadas-9a4f99.netlify.app)
+**Frontend:** [https://merry-queijadas-9a4f99.netlify.app](https://merry-queijadas-9a4f99.netlify.app)  
+**Backend API:** [https://b11a11-server-side-tsgm1257.vercel.app](https://b11a11-server-side-tsgm1257.vercel.app)
 
 ---
 
@@ -31,19 +33,18 @@ To reduce food waste and connect donors with individuals in need by enabling use
 
 ## Tech Stack
 
-- React
-- Vite
-- React Router
-- Tailwind CSS
-- DaisyUI
-- Firebase Authentication
-- TanStack React Query
-- SweetAlert2
-- motion/react
+- **Frontend:** React + Vite
+- **Routing:** React Router
+- **Styling:** Tailwind CSS + DaisyUI
+- **State/Data:** TanStack React Query
+- **Auth:** Firebase Authentication
+- **Animations:** motion/react
+- **Alerts:** SweetAlert2
 
 ---
 
 ## Screenshots
+
 ![Home](public/screenshots/home.png)
 ![Food Details](public/screenshots/food-details.png)
 
@@ -52,6 +53,15 @@ To reduce food waste and connect donors with individuals in need by enabling use
 Create a `.env` file in the root of your client project:
 
 VITE_API_BASE_URL=https://b11a11-server-side-tsgm1257.vercel.app
+
+Firebase Configuration
+
+- VITE_FIREBASE_API_KEY=
+- VITE_FIREBASE_AUTH_DOMAIN=
+- VITE_FIREBASE_PROJECT_ID=
+- VITE_FIREBASE_STORAGE_BUCKET=
+- VITE_FIREBASE_MESSAGING_SENDER_ID=
+- VITE_FIREBASE_APP_ID=
 
 ---
 
@@ -68,8 +78,6 @@ npm run dev
 
 ---
 
-## Available Scripts
+## Developed by
 
-- `npm run dev` — Start the development server
-- `npm run build` — Build the project for production
-- `npm run preview` — Preview the production build
+Tanzeem Siddique

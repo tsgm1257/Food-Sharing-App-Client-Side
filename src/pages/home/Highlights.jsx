@@ -47,7 +47,6 @@ const Highlights = () => (
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-6">
         {stats.map(({ k, end, suffix, icon: Icon, desc, points }, idx) => (
           <div key={idx} className="card-uniform p-5 text-center">
-            {/* NEW: show the icon so it's actually used */}
             <div className="flex justify-center">
               <div className="p-2 rounded-full bg-primary/10 text-primary">
                 <Icon className="text-xl" />

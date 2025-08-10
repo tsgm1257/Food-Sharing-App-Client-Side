@@ -3,7 +3,7 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer className="bg-base-100 text-base-content border-t">
-      {/* Same container + vertical rhythm as sections */}
+      
       <div className="container-app section-y grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {/* Logo & About */}
         <div>
@@ -80,7 +80,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom bar aligned to container too */}
+      {/* Bottom Bar */}
       <div className="bg-base-200">
         <div className="container-app py-4 text-center text-sm">
           © {new Date().getFullYear()} FoodShare. All rights reserved.

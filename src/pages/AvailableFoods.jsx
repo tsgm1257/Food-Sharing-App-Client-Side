@@ -34,7 +34,7 @@ const fetchFoods = async ({ base, search, sort }) => {
 const AvailableFoods = () => {
   const [searchInput, setSearchInput] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
-  const [sortOrder, setSortOrder] = useState("asc"); // "asc" | "desc"
+  const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
     const t = setTimeout(() => setDebouncedSearch(searchInput.trim()), 400);

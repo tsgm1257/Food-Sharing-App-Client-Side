@@ -5,7 +5,6 @@ const Hero = () => {
     <section className="section-y">
       <div className="container-app">
         <div className="grid md:grid-cols-2 gap-8 items-center">
-          {/* IMAGE first on small, second on md+ */}
           <div className="order-1 md:order-2 rounded-2xl overflow-hidden shadow border border-base-200 bg-base-100 group">
             <img
               className="w-full object-cover aspect-[16/9] transition-transform duration-300 ease-out will-change-transform group-hover:scale-105"
@@ -14,7 +13,6 @@ const Hero = () => {
             />
           </div>
 
-          {/* TEXT second on small, first on md+ */}
           <div className="order-2 md:order-1">
             <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">
               Share surplus food.{" "}

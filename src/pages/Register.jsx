@@ -58,7 +58,6 @@ const Register = () => {
     <section className="section-y">
       <div className="container-app">
         <div className="grid md:grid-cols-12 items-start gap-6 md:gap-8">
-          {/* LEFT: illustration — flush with container left */}
           <div className="hidden md:flex md:col-span-7 justify-start self-start">
             <figure className="rounded-2xl overflow-hidden border border-base-200 bg-base-100 w-full max-w-xl">
               <img
@@ -70,7 +69,6 @@ const Register = () => {
             </figure>
           </div>
 
-          {/* RIGHT: form — snap card to container right */}
           <div className="md:col-span-5 w-full md:justify-self-end">
             <div className="bg-base-100 shadow rounded p-6 w-full max-w-md">
               <h2 className="text-2xl font-bold mb-4">Register</h2>

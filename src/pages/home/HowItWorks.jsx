@@ -1,9 +1,9 @@
 import SectionTitle from "../../components/SectionTitle";
 import {
-  FiUpload, // Share
-  FiSearch, // Browse
-  FiSend, // Request
-  FiMapPin, // Pickup
+  FiUpload, 
+  FiSearch, 
+  FiSend, 
+  FiMapPin,
 } from "react-icons/fi";
 
 const steps = [

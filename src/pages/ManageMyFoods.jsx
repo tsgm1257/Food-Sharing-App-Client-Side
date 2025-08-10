@@ -11,6 +11,8 @@ const ManageMyFoods = () => {
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState("");
 
+  const FALLBACK = "https://i.ibb.co/VY1M4Z9/no-image.png";
+
   const fetchMyFoods = async () => {
     try {
       setLoading(true);
@@ -94,9 +96,14 @@ const ManageMyFoods = () => {
                 <tr key={food._id}>
                   <td>
                     <img
-                      src={food.food_image}
+                      src={food.food_image || FALLBACK}
+                      onError={(e) => {
+                        if (e.currentTarget.src !== FALLBACK)
+                          e.currentTarget.src = FALLBACK;
+                      }}
                       alt={food.food_name}
                       className="w-16 h-16 rounded object-cover"
+                      loading="lazy"
                     />
                   </td>
                   <td>{food.food_name}</td>

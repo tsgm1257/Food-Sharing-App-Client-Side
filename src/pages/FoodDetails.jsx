@@ -12,6 +12,8 @@ const FoodDetails = () => {
   const [showModal, setShowModal] = useState(false);
   const [notes, setNotes] = useState("");
 
+  const FALLBACK = "https://i.ibb.co/VY1M4Z9/no-image.png";
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_BASE_URL}/foods/${id}`)
       .then((res) => res.json())
@@ -78,9 +80,14 @@ const FoodDetails = () => {
         <div className="bg-base-100 shadow rounded p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div>
             <img
-              src={food.food_image}
+              src={food.food_image || FALLBACK}
+              onError={(e) => {
+                if (e.currentTarget.src !== FALLBACK)
+                  e.currentTarget.src = FALLBACK;
+              }}
               alt={food.food_name}
               className="w-full h-72 object-cover rounded"
+              loading="lazy"
             />
           </div>
 
@@ -133,7 +140,16 @@ const FoodDetails = () => {
               </p>
               <p className="flex items-center gap-3">
                 <strong>Food Image:</strong>
-                <img src={food.food_image} alt="" className="h-16 rounded" />
+                <img
+                  src={food.food_image || FALLBACK}
+                  onError={(e) => {
+                    if (e.currentTarget.src !== FALLBACK)
+                      e.currentTarget.src = FALLBACK;
+                  }}
+                  alt=""
+                  className="h-16 rounded"
+                  loading="lazy"
+                />
               </p>
               <p>
                 <strong>Food ID:</strong> {id}

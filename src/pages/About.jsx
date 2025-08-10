@@ -6,17 +6,22 @@ import {
 } from "react-icons/fi";
 import { FaRecycle } from "react-icons/fa";
 
-const HowCard = ({ icon: Icon, title, children }) => (
-  <div className="card-uniform p-6 text-center">
-    <div className="flex justify-center">
-      <div className="p-3 rounded-full bg-primary/10 text-primary">
-        <Icon className="text-3xl" />
+function HowCard(props) {
+  const Icon = props.icon;
+  const { title, children } = props;
+
+  return (
+    <div className="card-uniform p-6 text-center">
+      <div className="flex justify-center">
+        <div className="p-3 rounded-full bg-primary/10 text-primary">
+          <Icon className="text-3xl" />
+        </div>
       </div>
+      <h3 className="text-xl font-semibold mt-4">{title}</h3>
+      <p className="text-base-content/70 mt-2">{children}</p>
     </div>
-    <h3 className="text-xl font-semibold mt-4">{title}</h3>
-    <p className="mt-2 opacity-90">{children}</p>
-  </div>
-);
+  );
+}
 
 const QA = ({ q, a }) => (
   <details className="card-uniform p-5">

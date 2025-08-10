@@ -16,24 +16,24 @@ const stats = [
     end: 560,
     suffix: "+",
     icon: FiUsers,
-    desc: "Neighbors regularly posting available food.",
-    points: ["Consistent monthly contributors", "New donors joining weekly"],
+    desc: "Neighbors regularly posting available foods.",
+    points: ["Onboarded with email", "Recent monthly activity ≥ 1"],
   },
   {
-    k: "Requests Fulfilled",
-    end: 1930,
+    k: "Successful Requests",
+    end: 1800,
     suffix: "+",
     icon: FiCheckCircle,
-    desc: "Successful handoffs coordinated through FoodShare.",
-    points: ["On-time pickups confirmed", "Cancellations kept minimal"],
+    desc: "Requests fulfilled through the platform.",
+    points: ["Pickup confirmed", "No-show rate trending down"],
   },
   {
-    k: "Communities",
-    end: 40,
+    k: "Pickup Points",
+    end: 120,
     suffix: "+",
     icon: FiMapPin,
-    desc: "Cities and neighborhoods participating so far.",
-    points: ["Local groups organizing drives", "Expanding with partnerships"],
+    desc: "Common meetup spots across neighborhoods.",
+    points: ["Grocery parking lots", "Community centers & parks"],
   },
 ];
 
@@ -41,18 +41,20 @@ const Highlights = () => (
   <section className="section-y">
     <div className="container-app">
       <SectionTitle
-        title="Impact at a Glance"
-        subtitle="Real results from people helping people"
+        title="Community Highlights"
+        subtitle="Real numbers from real neighbors"
       />
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {stats.map(({ k, end, suffix, icon: Icon, desc, points }) => (
-          <div key={k} className="card-uniform p-6 text-center">
-            <div className="mx-auto mb-3 flex items-center justify-center w-12 h-12 rounded-full bg-primary/10">
-              <Icon size={22} aria-hidden="true" />
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-6">
+        {stats.map(({ k, end, suffix, icon: Icon, desc, points }, idx) => (
+          <div key={idx} className="card-uniform p-5 text-center">
+            {/* NEW: show the icon so it's actually used */}
+            <div className="flex justify-center">
+              <div className="p-2 rounded-full bg-primary/10 text-primary">
+                <Icon className="text-xl" />
+              </div>
             </div>
 
-            <div className="text-2xl font-extrabold">
+            <div className="text-3xl font-bold mt-2">
               <CountUp
                 end={end}
                 duration={1.5}

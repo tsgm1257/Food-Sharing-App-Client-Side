@@ -3,6 +3,8 @@ import { NavLink, Link, useNavigate } from "react-router";
 import { FiMenu } from "react-icons/fi";
 import { AuthContext } from "../contexts/AuthContext/AuthProvider";
 
+const DEFAULT_AVATAR = "https://i.ibb.co/Q3YR2xSn/default-user.png";
+
 const NavItem = ({ to, children, onClick }) => (
   <NavLink
     to={to}
@@ -45,6 +47,7 @@ const Navbar = () => {
   ];
 
   const displayName = user?.displayName || "User";
+  const avatarSrc = user?.photoURL?.trim() ? user.photoURL : DEFAULT_AVATAR;
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 bg-base-100 text-base-content border-b">
@@ -101,17 +104,18 @@ const Navbar = () => {
                     <div className="avatar">
                       <div className="w-9 rounded-full ring ring-primary/30 ring-offset-base-100 ring-offset-2">
                         <img
-                          alt="avatar"
-                          src={
-                            user.photoURL || "https://i.pravatar.cc/100?img=12"
-                          }
+                          alt="Profile avatar"
+                          src={avatarSrc}
+                          onError={(e) => {
+                            e.currentTarget.src = DEFAULT_AVATAR;
+                          }}
                         />
                       </div>
                     </div>
                   </div>
                   <button
                     onClick={handleLogout}
-                    className="btn-outline-uni btn-sm"
+                    className="btn btn-outline btn-sm"
                   >
                     Logout
                   </button>
@@ -147,13 +151,13 @@ const Navbar = () => {
                         data-tip={displayName}
                       >
                         <div className="avatar">
-                          <div className="w-12 rounded-full ring ring-primary/30 ring-offset-base-100 ring-offset-2">
+                          <div className="w-12 rounded-full ring ring-primary/30 ring-offset-base-100 ring-offset-2 mx-auto">
                             <img
-                              alt="avatar"
-                              src={
-                                user.photoURL ||
-                                "https://i.pravatar.cc/100?img=12"
-                              }
+                              alt="Profile avatar"
+                              src={avatarSrc}
+                              onError={(e) => {
+                                e.currentTarget.src = DEFAULT_AVATAR;
+                              }}
                             />
                           </div>
                         </div>
@@ -171,7 +175,7 @@ const Navbar = () => {
                     <li className="pt-2">
                       <button
                         onClick={handleLogout}
-                        className="btn-outline-uni btn-sm w-full"
+                        className="btn btn-outline btn-sm w-full"
                       >
                         Logout
                       </button>

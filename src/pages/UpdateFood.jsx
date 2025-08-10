@@ -10,15 +10,19 @@ const UpdateFood = () => {
   const [food, setFood] = useState(null);
   const [quantityNumber, setQuantityNumber] = useState("");
   const [quantityUnit, setQuantityUnit] = useState("");
+  const [previewUrl, setPreviewUrl] = useState("");
+
+  const FALLBACK = "https://i.ibb.co/VY1M4Z9/no-image.png";
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_BASE_URL}/foods/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setFood(data);
-        const parts = data.food_quantity.split(" ");
-        setQuantityNumber(parts[0]);
-        setQuantityUnit(parts.slice(1).join(" "));
+        const parts = String(data.food_quantity || "").split(" ");
+        setQuantityNumber(parts[0] || "");
+        setQuantityUnit(parts.slice(1).join(" ") || "");
+        setPreviewUrl(data.food_image || "");
       })
       .catch((err) => console.error(err));
   }, [id]);
@@ -30,7 +34,8 @@ const UpdateFood = () => {
     const updatedFood = {
       food_name: form.food_name.value,
       food_image: form.food_image.value,
-      food_quantity: `${form.quantity_number.value} ${form.quantity_unit.value}`,
+      food_quantity:
+        `${form.quantity_number.value} ${form.quantity_unit.value}`.trim(),
       quantity_value: Number(form.quantity_number.value),
       pickup_location: form.pickup_location.value,
       expired_at: form.expired_at.value,
@@ -64,7 +69,15 @@ const UpdateFood = () => {
     }
   };
 
-  if (!food) return <Loader variant="skeleton" layout="lines" count={6} />;
+  if (!food) {
+    return (
+      <section className="section-y">
+        <div className="container-app">
+          <Loader variant="skeleton" layout="lines" count={6} />
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="section-y">
@@ -75,6 +88,25 @@ const UpdateFood = () => {
             onSubmit={handleUpdate}
             className="grid grid-cols-1 md:grid-cols-2 gap-4"
           >
+            {/* Live preview */}
+            <fieldset className="md:col-span-2">
+              <legend className="text-sm font-medium mb-2">
+                Current Preview
+              </legend>
+              <div className="rounded-xl overflow-hidden border border-base-200 bg-base-200">
+                <img
+                  src={previewUrl || FALLBACK}
+                  onError={(e) => {
+                    if (e.currentTarget.src !== FALLBACK)
+                      e.currentTarget.src = FALLBACK;
+                  }}
+                  alt={food.food_name}
+                  className="w-full h-56 object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </fieldset>
+
             <fieldset>
               <legend className="text-sm font-medium mb-1">Food Name</legend>
               <input
@@ -95,6 +127,7 @@ const UpdateFood = () => {
                 defaultValue={food.food_image}
                 type="text"
                 className="input input-bordered w-full"
+                onChange={(e) => setPreviewUrl(e.target.value)}
                 required
               />
             </fieldset>

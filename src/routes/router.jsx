@@ -4,6 +4,8 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import AvailableFoods from "../pages/AvailableFoods";
+import About from "../pages/About";
+
 import AddFood from "../pages/AddFood";
 import ManageMyFoods from "../pages/ManageMyFoods";
 import MyFoodRequest from "../pages/MyFoodRequest";
@@ -18,6 +20,7 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       { path: "/", element: <Home /> },
+      { path: "/about", element: <About /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       { path: "/available-foods", element: <AvailableFoods /> },

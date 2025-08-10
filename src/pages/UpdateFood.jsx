@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import Loader from "../components/Loader";
+import SectionTitle from "../components/SectionTitle";
 
 const UpdateFood = () => {
   const { id } = useParams();
@@ -66,94 +67,106 @@ const UpdateFood = () => {
   if (!food) return <Loader variant="skeleton" layout="lines" count={6} />;
 
   return (
-    <div className="max-w-3xl mx-auto p-6 my-8 bg-base-100 shadow rounded">
-      <h2 className="text-2xl font-bold mb-6 text-center">Update Food</h2>
-      <form
-        onSubmit={handleUpdate}
-        className="grid grid-cols-1 md:grid-cols-2 gap-4"
-      >
-        <fieldset>
-          <legend className="text-sm font-medium mb-1">Food Name</legend>
-          <input
-            name="food_name"
-            defaultValue={food.food_name}
-            type="text"
-            className="input input-bordered w-full"
-            required
-          />
-        </fieldset>
+    <section className="section-y">
+      <div className="container-app">
+        <SectionTitle title="Update Food" subtitle="Edit your shared item" />
+        <div className="bg-base-100 shadow rounded p-6">
+          <form
+            onSubmit={handleUpdate}
+            className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          >
+            <fieldset>
+              <legend className="text-sm font-medium mb-1">Food Name</legend>
+              <input
+                name="food_name"
+                defaultValue={food.food_name}
+                type="text"
+                className="input input-bordered w-full"
+                required
+              />
+            </fieldset>
 
-        <fieldset>
-          <legend className="text-sm font-medium mb-1">Food Image URL</legend>
-          <input
-            name="food_image"
-            defaultValue={food.food_image}
-            type="text"
-            className="input input-bordered w-full"
-            required
-          />
-        </fieldset>
+            <fieldset>
+              <legend className="text-sm font-medium mb-1">
+                Food Image URL
+              </legend>
+              <input
+                name="food_image"
+                defaultValue={food.food_image}
+                type="text"
+                className="input input-bordered w-full"
+                required
+              />
+            </fieldset>
 
-        <fieldset className="md:col-span-2">
-          <legend className="text-sm font-medium mb-1">
-            Quantity (Number & Unit)
-          </legend>
-          <div className="grid grid-cols-2 gap-2">
-            <input
-              name="quantity_number"
-              type="number"
-              min="1"
-              className="input input-bordered"
-              defaultValue={quantityNumber}
-              required
-            />
-            <input
-              name="quantity_unit"
-              type="text"
-              className="input input-bordered"
-              defaultValue={quantityUnit}
-              required
-            />
-          </div>
-        </fieldset>
+            <fieldset className="md:col-span-2">
+              <legend className="text-sm font-medium mb-1">
+                Quantity (Number & Unit)
+              </legend>
+              <div className="grid grid-cols-2 gap-2">
+                <input
+                  name="quantity_number"
+                  type="number"
+                  min="1"
+                  className="input input-bordered"
+                  defaultValue={quantityNumber}
+                  required
+                />
+                <input
+                  name="quantity_unit"
+                  type="text"
+                  className="input input-bordered"
+                  defaultValue={quantityUnit}
+                  required
+                />
+              </div>
+            </fieldset>
 
-        <fieldset className="md:col-span-2">
-          <legend className="text-sm font-medium mb-1">Pickup Location</legend>
-          <input
-            name="pickup_location"
-            defaultValue={food.pickup_location}
-            type="text"
-            className="input input-bordered w-full"
-            required
-          />
-        </fieldset>
+            <fieldset className="md:col-span-2">
+              <legend className="text-sm font-medium mb-1">
+                Pickup Location
+              </legend>
+              <input
+                name="pickup_location"
+                defaultValue={food.pickup_location}
+                type="text"
+                className="input input-bordered w-full"
+                required
+              />
+            </fieldset>
 
-        <fieldset className="md:col-span-2">
-          <legend className="text-sm font-medium mb-1">
-            Expire Date & Time
-          </legend>
-          <input
-            name="expired_at"
-            defaultValue={food.expired_at?.slice(0, 16)}
-            type="datetime-local"
-            className="input input-bordered w-full"
-            required
-          />
-        </fieldset>
+            <fieldset className="md:col-span-2">
+              <legend className="text-sm font-medium mb-1">
+                Expire Date & Time
+              </legend>
+              <input
+                name="expired_at"
+                defaultValue={food.expired_at?.slice(0, 16)}
+                type="datetime-local"
+                className="input input-bordered w-full"
+                required
+              />
+            </fieldset>
 
-        <fieldset className="md:col-span-2">
-          <legend className="text-sm font-medium mb-1">Additional Notes</legend>
-          <textarea
-            name="notes"
-            defaultValue={food.notes}
-            className="textarea textarea-bordered w-full"
-            rows="3"
-          />
-        </fieldset>
+            <fieldset className="md:col-span-2">
+              <legend className="text-sm font-medium mb-1">
+                Additional Notes
+              </legend>
+              <textarea
+                name="notes"
+                defaultValue={food.notes}
+                className="textarea textarea-bordered w-full"
+                rows="3"
+              />
+            </fieldset>
 
-        <button className="btn btn-primary md:col-span-2">Update Food</button>
-      </form>
-    </div>
+            <button className="btn btn-primary md:col-span-2">
+              Update Food
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
   );
 };
 

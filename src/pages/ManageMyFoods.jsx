@@ -3,6 +3,7 @@ import { AuthContext } from "../contexts/AuthContext/AuthProvider";
 import Swal from "sweetalert2";
 import { Link } from "react-router";
 import Loader from "../components/Loader";
+import SectionTitle from "../components/SectionTitle";
 
 const ManageMyFoods = () => {
   const { user } = useContext(AuthContext);
@@ -65,22 +66,17 @@ const ManageMyFoods = () => {
     });
   };
 
-  if (loading) {
-    return <Loader variant="spinner" srLabel="Loading your foods" />;
-  }
-
-  if (err) {
-    return <div className="text-center text-error">{err}</div>;
-  }
+  if (loading) return <Loader variant="spinner" srLabel="Loading your foods" />;
+  if (err) return <div className="text-center text-error">{err}</div>;
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
-      <h2 className="text-3xl font-bold mb-6 text-center">Manage My Foods</h2>
-      {myFoods.length === 0 ? (
-        <p className="text-center text-gray-500">No foods added yet.</p>
-      ) : (
+    <section className="section-y">
+      <div className="container-app">
+        <SectionTitle
+          title="Manage My Foods"
+          subtitle="Update or remove your shared items"
+        />
         <div className="overflow-x-auto">
-          {/* align-middle will center normal cells; td-middle enforces in Actions cell */}
           <table className="table w-full align-middle">
             <thead>
               <tr>
@@ -129,8 +125,8 @@ const ManageMyFoods = () => {
             </tbody>
           </table>
         </div>
-      )}
-    </div>
+      </div>
+    </section>
   );
 };
 

@@ -41,7 +41,7 @@ const Navbar = () => {
   const protectedLinks = [
     { to: "/add-food", label: "Add Food" },
     { to: "/manage-my-foods", label: "My Foods" },
-    { to: "/my-requests", label: "My Requests" },
+    { to: "/my-food-request", label: "My Requests" },
   ];
 
   const displayName = user?.displayName || "User";
@@ -84,10 +84,10 @@ const Navbar = () => {
             <div className="hidden lg:flex items-center gap-2">
               {!user ? (
                 <>
-                  <Link to="/login" className="btn-outline-uni btn-sm">
+                  <Link to="/login" className="btn btn-outline btn-sm">
                     Login
                   </Link>
-                  <Link to="/register" className="btn-filled btn-sm">
+                  <Link to="/register" className="btn btn-primary btn-sm">
                     Register
                   </Link>
                 </>
@@ -185,13 +185,16 @@ const Navbar = () => {
                     <li className="py-1">
                       <Link
                         to="/login"
-                        className="btn-outline-uni btn-sm w-full"
+                        className="btn btn-outline btn-sm w-full"
                       >
                         Login
                       </Link>
                     </li>
                     <li className="py-1">
-                      <Link to="/register" className="btn-filled btn-sm w-full">
+                      <Link
+                        to="/register"
+                        className="btn btn-primary btn-sm w-full"
+                      >
                         Register
                       </Link>
                     </li>

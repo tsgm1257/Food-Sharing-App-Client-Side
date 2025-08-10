@@ -45,7 +45,9 @@ To reduce food waste and connect donors with individuals in need by enabling use
 
 ## Screenshots
 
+### Home
 ![Home](public/screenshots/home.png)
+### Food Details
 ![Food Details](public/screenshots/food-details.png)
 
 ## Environment Variables

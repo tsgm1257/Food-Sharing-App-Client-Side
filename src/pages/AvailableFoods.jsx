@@ -1,8 +1,8 @@
-// src/pages/AvailableFoods.jsx
 import { useEffect, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import FoodCard from "../components/FoodCard";
 import SectionTitle from "../components/SectionTitle";
+import Loader from "../components/Loader";
 
 const qtyNum = (v) => {
   if (typeof v === "number") return v;
@@ -16,8 +16,6 @@ const fetchFoods = async ({ base, search, sort }) => {
   const params = new URLSearchParams();
   params.set("status", "Available");
   if (search) params.set("search", search);
-  // We’ll sort client-side by quantity_value to stick to the assignment example, but
-  // you CAN use backend sort with sortBy=quantity&sort=asc|desc if you want.
   const res = await fetch(`${base}/foods?${params.toString()}`);
   if (!res.ok) throw new Error(`Request failed: ${res.status}`);
   const data = await res.json();
@@ -38,7 +36,6 @@ const AvailableFoods = () => {
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [sortOrder, setSortOrder] = useState("asc"); // "asc" | "desc"
 
-  // debounce search
   useEffect(() => {
     const t = setTimeout(() => setDebouncedSearch(searchInput.trim()), 400);
     return () => clearTimeout(t);
@@ -101,19 +98,7 @@ const AvailableFoods = () => {
         </div>
 
         {/* Loader */}
-        {isLoading && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="card-uniform p-4 animate-pulse">
-                <div className="w-full aspect-[4/3] bg-base-200 rounded mb-3"></div>
-                <div className="h-4 bg-base-200 rounded w-3/4 mb-2"></div>
-                <div className="h-3 bg-base-200 rounded w-1/2 mb-1"></div>
-                <div className="h-3 bg-base-200 rounded w-2/3 mb-3"></div>
-                <div className="h-8 bg-base-200 rounded w-24 ml-auto"></div>
-              </div>
-            ))}
-          </div>
-        )}
+        {isLoading && <Loader variant="skeleton" layout="cards" count={8} />}
 
         {/* Error */}
         {isError && (

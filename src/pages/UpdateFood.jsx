@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import Loader from "../components/Loader";
 
 const UpdateFood = () => {
   const { id } = useParams();
@@ -14,7 +15,6 @@ const UpdateFood = () => {
       .then((res) => res.json())
       .then((data) => {
         setFood(data);
-        // Try to separate quantity into number and unit
         const parts = data.food_quantity.split(" ");
         setQuantityNumber(parts[0]);
         setQuantityUnit(parts.slice(1).join(" "));
@@ -63,7 +63,7 @@ const UpdateFood = () => {
     }
   };
 
-  if (!food) return <div className="text-center mt-10">Loading...</div>;
+  if (!food) return <Loader variant="skeleton" layout="lines" count={6} />;
 
   return (
     <div className="max-w-3xl mx-auto p-6 my-8 bg-base-100 shadow rounded">
@@ -148,7 +148,7 @@ const UpdateFood = () => {
             defaultValue={food.notes}
             className="textarea textarea-bordered w-full"
             rows="3"
-          ></textarea>
+          />
         </fieldset>
 
         <button className="btn btn-primary md:col-span-2">Update Food</button>

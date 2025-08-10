@@ -29,13 +29,8 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="/dashboard" className="hover:underline">
-                Dashboard
-              </a>
-            </li>
-            <li>
-              <a href="/contact" className="hover:underline">
-                Contact
+              <a href="/about" className="hover:underline">
+                About
               </a>
             </li>
           </ul>

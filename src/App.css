@@ -25,3 +25,9 @@
     --rounded-btn: 0.75rem;
   }
 }
+
+@layer components {
+  .td-middle {
+    vertical-align: middle !important;
+  }
+}

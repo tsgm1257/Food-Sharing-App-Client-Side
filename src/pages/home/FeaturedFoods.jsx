@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SectionTitle from "../../components/SectionTitle";
 import FoodCard from "../../components/FoodCard";
+import Loader from "../../components/Loader";
 
 const qtyNum = (v) => {
   if (typeof v === "number") return v;
@@ -61,11 +62,7 @@ const FeaturedFoods = () => {
           subtitle="Top-quantity shares available right now"
         />
 
-        {loading && (
-          <div className="flex justify-center">
-            <span className="loading loading-spinner loading-lg" />
-          </div>
-        )}
+        {loading && <Loader variant="skeleton" layout="cards" count={8} />}
 
         {!loading && err && <div className="text-center text-error">{err}</div>}
 

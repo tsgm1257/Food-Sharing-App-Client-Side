@@ -2,20 +2,34 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext/AuthProvider";
 import Swal from "sweetalert2";
 import { Link } from "react-router";
+import Loader from "../components/Loader";
 
 const ManageMyFoods = () => {
   const { user } = useContext(AuthContext);
   const [myFoods, setMyFoods] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState("");
 
-  const fetchMyFoods = () => {
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/foods?email=${user.email}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("access-token")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setMyFoods(data))
-      .catch((err) => console.error(err));
+  const fetchMyFoods = async () => {
+    try {
+      setLoading(true);
+      setErr("");
+      const res = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/foods?email=${user.email}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+          },
+        }
+      );
+      const data = await res.json();
+      setMyFoods(Array.isArray(data) ? data : []);
+    } catch (e) {
+      console.error(e);
+      setErr("Failed to load your foods.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -43,10 +57,21 @@ const ManageMyFoods = () => {
               Swal.fire("Deleted!", "Your food has been deleted.", "success");
               fetchMyFoods();
             }
+          })
+          .catch(() => {
+            Swal.fire("Error", "Delete failed.", "error");
           });
       }
     });
   };
+
+  if (loading) {
+    return <Loader variant="spinner" srLabel="Loading your foods" />;
+  }
+
+  if (err) {
+    return <div className="text-center text-error">{err}</div>;
+  }
 
   return (
     <div className="max-w-6xl mx-auto p-6">
@@ -55,7 +80,8 @@ const ManageMyFoods = () => {
         <p className="text-center text-gray-500">No foods added yet.</p>
       ) : (
         <div className="overflow-x-auto">
-          <table className="table w-full">
+          {/* align-middle will center normal cells; td-middle enforces in Actions cell */}
+          <table className="table w-full align-middle">
             <thead>
               <tr>
                 <th>Image</th>
@@ -82,19 +108,21 @@ const ManageMyFoods = () => {
                   <td>{food.pickup_location}</td>
                   <td>{new Date(food.expired_at).toLocaleString()}</td>
                   <td>{food.status}</td>
-                  <td className="flex gap-2">
-                    <Link
-                      to={`/update-food/${food._id}`}
-                      className="btn btn-sm btn-info"
-                    >
-                      Update
-                    </Link>
-                    <button
-                      onClick={() => handleDelete(food._id)}
-                      className="btn btn-sm btn-error"
-                    >
-                      Delete
-                    </button>
+                  <td className="td-middle">
+                    <div className="inline-flex items-center gap-2">
+                      <Link
+                        to={`/update-food/${food._id}`}
+                        className="btn btn-sm btn-outline"
+                      >
+                        Update
+                      </Link>
+                      <button
+                        onClick={() => handleDelete(food._id)}
+                        className="btn btn-sm btn-outline border-error text-error"
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}

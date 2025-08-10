@@ -8,7 +8,7 @@ This is the frontend of the Food Sharing platform built using React and Vite. It
 
 ## Live Site
 
-**Frontend:** [https://merry-queijadas-9a4f99.netlify.app](https://merry-queijadas-9a4f99.netlify.app)  
+**Frontend:** [https://food-sharing-app-client-side.netlify.app](https://food-sharing-app-client-side.netlify.app)
 **Backend API:** [https://b11a11-server-side-tsgm1257.vercel.app](https://b11a11-server-side-tsgm1257.vercel.app)
 
 ---

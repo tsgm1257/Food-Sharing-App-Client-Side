@@ -11,7 +11,7 @@ const ManageMyFoods = () => {
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState("");
 
-  const FALLBACK = "https://i.ibb.co/VY1M4Z9/no-image.png";
+  const FALLBACK = "https://i.ibb.co/VY1M4Z9g/no-image.png";
 
   const fetchMyFoods = async () => {
     try {

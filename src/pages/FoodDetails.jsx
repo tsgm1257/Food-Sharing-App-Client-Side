@@ -12,7 +12,7 @@ const FoodDetails = () => {
   const [showModal, setShowModal] = useState(false);
   const [notes, setNotes] = useState("");
 
-  const FALLBACK = "https://i.ibb.co/VY1M4Z9/no-image.png";
+  const FALLBACK = "https://i.ibb.co/VY1M4Z9g/no-image.png";
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_BASE_URL}/foods/${id}`)
